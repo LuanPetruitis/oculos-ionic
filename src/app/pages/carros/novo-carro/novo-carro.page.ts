@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Carroservice } from '../service/carro-service';
@@ -11,11 +12,13 @@ import { Carroservice } from '../service/carro-service';
 export class novoCarroPage implements OnInit {
   carrosForm: FormGroup;
 
+  selectedFile: any;
 
   constructor(
     private builder: FormBuilder,
     private nav: NavController,
     private carro: Carroservice,
+    private storage: AngularFireStorage
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,7 @@ export class novoCarroPage implements OnInit {
     this.carrosForm = this.builder.group({
       nome: ['', [Validators.required]],
       marca: ['', [Validators.required]],
+      descricao: ['', [Validators.required]],
       quilometragem: ['', [Validators.required]],
       valor: ['', [Validators.required]],
     })
@@ -38,36 +42,34 @@ export class novoCarroPage implements OnInit {
     console.log("=====================")
     console.log(this.carrosForm.value)
     const carro = this.carrosForm.value;
+
+
     this.carro.registraCarro(carro)
-      .then(() => this.nav.navigateForward('home'));
+      .then(async resp => {
+        console.log(resp)
+        const imageUrl = await this.uploadFile(resp.id, this.selectedFile)
+
+        this.carro.update(resp.id, {
+          imageUrl: imageUrl || null
+        })
+
+        this.nav.navigateForward('home')
+      });
   }
 
-  // loadImageFromDevice(event) {
+  chooseFile (event) {
+    this.selectedFile = event.target.files
+  }
 
-  //   const file = event.target.files[0];
-  
-  //   const reader = new FileReader();
-  
-  //   reader.readAsArrayBuffer(file);
-  
-  //   reader.onload = () => {
-  
-  //     // get the blob of the image:
-  //     let blob: Blob = new Blob([new Uint8Array((reader.result as ArrayBuffer))]);
-  
-  //     // create blobURL, such that we could use it in an image element:
-  //     let blobURL: string = URL.createObjectURL(blob);
-
-  //     console.log(blob)
-  //     console.log(blobURL)
-  
-  //   };
-  
-  //   reader.onerror = (error) => {
-  
-  //     //handle errors
-  
-  //   };
-  // };
+  async uploadFile(id, file): Promise<any> {
+    if(file && file.length) {
+      try {
+        const task = await this.storage.ref('images').child(id).put(file[0])
+        return this.storage.ref(`images/${id}`).getDownloadURL().toPromise();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
 }

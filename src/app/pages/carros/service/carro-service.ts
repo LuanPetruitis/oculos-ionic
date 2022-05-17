@@ -14,12 +14,17 @@ export class Carroservice {
   registraCarro(carro) {
     carro.id = this.db.createId();
     this.collection = this.db.collection('carro');
-    return this.collection.doc(carro.id).set(carro);
+    return this.collection.add(carro);
   }
 
-  lista(tipo) {
-    this.collection = this.db.collection('carro', ref => ref.where('tipo', '==', tipo));
+  lista() {
+    this.collection = this.db.collection('carro', ref => ref.where('id', '!=', 0));
     return this.collection.valueChanges();
+  }
+
+  update(id, data) {
+    this.collection = this.db.collection('carro');
+    return this.collection.doc(id).update(data)
   }
 
   remove(carro) {
