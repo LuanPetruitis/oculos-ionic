@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { novoCarroPageRoutingModule } from './novoCarro-routing.module';
+import { novoCarroPageRoutingModule } from './novo-carro-routing.module';
 
-import { novoCarroPage } from './novoCarro.page';
+import { novoCarroPage } from './novo-carro.page';
 
 @NgModule({
   imports: [

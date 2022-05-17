@@ -4,8 +4,8 @@ import { NavController } from '@ionic/angular';
 import { Carroservice } from '../service/carro-service';
 
 @Component({
-  selector: 'app-novoCarro',
-  templateUrl: './novoCarro.page.html'
+  selector: 'app-novo-carro',
+  templateUrl: './novo-carro.page.html'
   // styleUrls: ['./novoCarro.page.scss'],
 })
 export class novoCarroPage implements OnInit {
@@ -39,7 +39,7 @@ export class novoCarroPage implements OnInit {
     console.log(this.carrosForm.value)
     const carro = this.carrosForm.value;
     this.carro.registraCarro(carro)
-      .then(() => this.nav.navigateForward('carros/new'));
+      .then(() => this.nav.navigateForward('home'));
   }
 
   // loadImageFromDevice(event) {

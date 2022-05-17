@@ -8,12 +8,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    path: 'carro',
+    loadChildren: () => import('./pages/carros/carros.module').then( m => m.CarrosModule),
   },
   {
-    path: 'carros',
-    loadChildren: () => import('./pages/carros/carros.module').then( m => m.CarrosModule),
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
   },
   {
     path: 'auth',

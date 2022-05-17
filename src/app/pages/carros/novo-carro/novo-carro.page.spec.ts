@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { novoCarroPage } from './novoCarro.page';
+import { novoCarroPage } from './novo-carro.page';
 
 describe('novoCarroPage', () => {
   let component: novoCarroPage;
