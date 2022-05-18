@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 // import { NavController } from '@ionic/angular/providers/nav-controller';
 import { LoginService } from '../auth/login/login.service';
 import { Carroservice } from '../carros/service/carro-service';
@@ -10,13 +11,14 @@ import { Carroservice } from '../carros/service/carro-service';
 })
 export class HomePage {
   listaCarros;
-
+  
   constructor(
     private service: LoginService,
-    private carro: Carroservice
+    private carro: Carroservice,
+    private storage: AngularFireStorage
   ) {}
-
-  
+    
+    
   ngOnInit() {
     this.carro.lista().subscribe((x) => (this.listaCarros = x));
   }
@@ -26,6 +28,11 @@ export class HomePage {
   }
 
   remove(carro) {
+    // console.log(carro)
+    // if(carro.imageUrl) {
+    //   this.storage.refFromURL(carro.imageUrl).delete()
+    // }
+    console.log(carro)
     this.carro.remove(carro);
   }
 }

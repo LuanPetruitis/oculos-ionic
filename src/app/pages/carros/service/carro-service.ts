@@ -29,6 +29,7 @@ export class Carroservice {
 
   remove(carro) {
     this.collection = this.db.collection('carro');
+    console.log(carro.id)
     this.collection.doc(carro.id).delete();
   }
 }
