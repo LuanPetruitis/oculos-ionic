@@ -14,7 +14,9 @@ export class Carroservice {
   registraCarro(carro) {
     carro.id = this.db.createId();
     this.collection = this.db.collection('carro');
-    return this.collection.add(carro);
+    //  this.collection.add(carro);
+    this.collection.doc(carro.id).set(carro)
+    return carro
   }
 
   lista() {
@@ -28,8 +30,12 @@ export class Carroservice {
   }
 
   remove(carro) {
+    // console.log(this.db.collection('carro', ref => ref.where('id', '==', carro.id)).valueChanges().subscribe((x) => (console.log(x))));
+
+    // this.update('ayJFoV06rKGq1uPZMGLK', {"nome": "Vai funcionar"})
+
     this.collection = this.db.collection('carro');
     console.log(carro.id)
-    this.collection.doc(carro.id).delete();
+    this.collection.doc(carro.id).delete().then(() => console.log("Apaguei")).catch(() => console.log("Apaguei"));
   }
 }

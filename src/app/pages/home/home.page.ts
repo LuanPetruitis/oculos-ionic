@@ -28,11 +28,12 @@ export class HomePage {
   }
 
   remove(carro) {
-    // console.log(carro)
-    // if(carro.imageUrl) {
-    //   this.storage.refFromURL(carro.imageUrl).delete()
-    // }
     console.log(carro)
+    if(carro.imageUrl) {
+      this.storage.refFromURL(carro.imageUrl).delete()
+    }
+    console.log(carro)
+    console.log(typeof carro.id)
     this.carro.remove(carro);
   }
 }

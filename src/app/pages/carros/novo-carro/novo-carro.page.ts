@@ -38,23 +38,20 @@ export class novoCarroPage implements OnInit {
   /**
    * Salva a nova carro no Firebase
    */
-  registraCarro() {
+  async registraCarro() {
     console.log("=====================")
-    console.log(this.carrosForm.value)
     const carro = this.carrosForm.value;
 
 
-    this.carro.registraCarro(carro)
-      .then(async resp => {
-        console.log(resp)
-        const imageUrl = await this.uploadFile(resp.id, this.selectedFile)
+    var resquest_carro = this.carro.registraCarro(carro)
+  
+    const imageUrl = await this.uploadFile(resquest_carro.id, this.selectedFile)
 
-        this.carro.update(resp.id, {
-          imageUrl: imageUrl || null
-        })
+    this.carro.update(resquest_carro.id, {
+      imageUrl: imageUrl || null
+    })
 
-        this.nav.navigateForward('home')
-      });
+    this.nav.navigateForward('home')
   }
 
   chooseFile (event) {
