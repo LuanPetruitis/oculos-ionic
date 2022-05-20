@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '', children: [
       {
-        path: 'cadastro',
+        path: 'cadastro/:id',
         component: novoCarroPage
       },
     ]

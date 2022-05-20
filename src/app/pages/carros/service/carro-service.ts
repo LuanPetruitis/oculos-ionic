@@ -12,11 +12,18 @@ export class Carroservice {
   ) { }
 
   registraCarro(carro) {
-    carro.id = this.db.createId();
+    if (!carro.hasOwnProperty('id')) {
+      carro.id = this.db.createId();
+    }
     this.collection = this.db.collection('carro');
     //  this.collection.add(carro);
     this.collection.doc(carro.id).set(carro)
     return carro
+  }
+
+  pegaCarro(id) {
+    this.collection = this.db.collection('carro', ref => ref.where('id', '==', id));
+    return this.collection.valueChanges();
   }
 
   lista() {
