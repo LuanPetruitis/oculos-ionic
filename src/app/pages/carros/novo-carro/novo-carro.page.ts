@@ -17,6 +17,7 @@ export class novoCarroPage implements OnInit {
   selectedFile: any;
   id: any;
   imageUrl: any;
+  criando: any;
 
   constructor(
     private builder: FormBuilder,
@@ -25,6 +26,7 @@ export class novoCarroPage implements OnInit {
     private actRoute: ActivatedRoute,
     private storage: AngularFireStorage
   ) {
+    this.criando = false
     this.id = this.actRoute.snapshot.paramMap.get('id');
     this.carro.pegaCarro(this.id).subscribe(res => {
       console.log(res[0])
@@ -68,6 +70,7 @@ export class novoCarroPage implements OnInit {
    * Salva a nova carro no Firebase
    */
   async registraCarro() {
+    this.criando = true;
     const carro = this.carrosForm.value;
     console.log(this.selectedFile)
     
@@ -85,6 +88,8 @@ export class novoCarroPage implements OnInit {
       imageUrl: this.imageUrl || null
     })
 
+    
+    this.criando = true;
     this.nav.navigateForward('home')
   }
 

@@ -44,7 +44,7 @@
       <input type="file" name="inputFile" (change)="chooseFile($event)" required>
     </ion-item>
 
-    <ion-button [disabled]="carrosForm.invalid" type="submit" expand="block" fill="outline">Enviar</ion-button>
+    <ion-button [disabled]="carrosForm.invalid || criando" type="submit" expand="block" fill="outline">Enviar</ion-button>
   </form>
 
 </ion-content>
