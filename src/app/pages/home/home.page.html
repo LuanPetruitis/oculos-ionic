@@ -3,54 +3,54 @@
     <ion-row class="ion-justify-content-between ion-align-items-center">
       <ion-col class="ion-text-start">
         <div class="ion-text-justify ion-padding-start">
-          <h1>Carros</h1>
+          <h1>Óculos</h1>
         </div>
       </ion-col>
       <ion-col class="ion-text-end">
-        <ion-button (click)="logOut()">
+        <!-- <ion-button (click)="logOut()">
             <ion-icon class="ion-margin-end" name="log-out-outline"></ion-icon>
             Sair
-          </ion-button>
+          </ion-button> -->
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-header>
 
 <ion-content class="ion-padding ion-text-end" scroll-y="false">
-  <ion-button class="ion-margin-bottom" routerLink="/carro/cadastro/new" routerDirection="root">
-    <ion-icon class="ion-margin-end" name="add-outline"></ion-icon>
-    <!-- <ion-icon name="create-outline" ></ion-icon> -->
-    Incluir
-  </ion-button>
   <ion-content scroll-y="true" class="ion-margin-top ion-margin-top">
     <ion-list>
-      <!-- <ion-item *ngFor="let conta of listaContas"> -->
-      <ion-card class="ion-text-start" *ngFor="let carro of listaCarros">
-        <ion-card-header>
-          <ion-grid>
-            <ion-row>
-              <ion-col [routerLink]="['/carro/cadastro/', carro.id]">
-                <ion-card-title>{{carro.nome}}</ion-card-title>
-                <ion-card-subtitle>{{carro.marca}}</ion-card-subtitle>
-              </ion-col>
-              <ion-col class="ion-text-end">
-                <ion-icon name="trash" (click)="remove(carro)"></ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card-header>
+        <!-- Sliding item with text options on both sides -->
+        <ion-item-sliding *ngFor="let oculo of listaOculos">
+          <ion-item-options side="start">
+            <ion-item-option [routerLink]="['/oculos/cadastro/', oculo.id]"><ion-icon name="create-outline"></ion-icon></ion-item-option>
+          </ion-item-options>
       
-        <ion-card-content>
-          {{carro.descricao}}
-        </ion-card-content>
+          <ion-item [routerLink]="['/detalhes/', oculo.id]">
+            <ion-label>
+              <h2>{{oculo.nome}}</h2>
+              <p>{{oculo.descricao}}</p>
+            </ion-label>
+          </ion-item>
       
-        <img [src]="carro.imageUrl" alt="" [routerLink]="['/carro/cadastro/', carro.id]">
-      </ion-card>
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="remove(oculo)"><ion-icon name="trash"></ion-icon></ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      
+      <!-- </ion-list> -->
     </ion-list>
 
    
   </ion-content>
 </ion-content>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/oculos/cadastro/new" routerDirection="root">
+  <ion-fab-button>
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="end">
+    <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
 
 <!-- <ion-footer collapse="fade">
   <ion-grid>
@@ -66,3 +66,29 @@
     </ion-row>
   </ion-grid>
 </ion-footer> -->
+
+
+
+
+<!-- Componente de cards mostrando as imagens -->
+<!-- <ion-card class="ion-text-start" *ngFor="let oculo of listaOculos">
+  <ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col [routerLink]="['/oculos/cadastro/', oculo.id]">
+          <ion-card-title>{{oculo.nome}}</ion-card-title>
+          <ion-card-subtitle>{{oculo.marca}}</ion-card-subtitle>
+        </ion-col>
+        <ion-col class="ion-text-end">
+          <ion-icon name="trash" (click)="remove(oculo)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+
+  <ion-card-content>
+    {{oculo.descricao}}
+  </ion-card-content>
+
+  <img [src]="oculo.imageUrl" alt="" [routerLink]="['/oculos/cadastro/', oculo.id]">
+</ion-card> -->

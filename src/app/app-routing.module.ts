@@ -4,20 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'carro',
-    loadChildren: () => import('./pages/carros/carros.module').then( m => m.CarrosModule),
+    path: 'oculos',
+    loadChildren: () => import('./pages/oculos/oculos.module').then( m => m.OculosModule),
   },
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
   },
   {
-    path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthModule),
+    path: 'detalhes/:id',
+    loadChildren: () => import('./pages/detalhes/detalhes.module').then( m => m.DetalhesPageModule)
   },
 ];
 
