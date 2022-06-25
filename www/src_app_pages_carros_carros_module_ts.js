@@ -1,10 +1,10 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([
-  ["src_app_pages_carros_carros_module_ts"],
+  ["src_app_pages_oculos_oculos_module_ts"],
   {
     /***/ 754:
       /*!*******************************************************!*\
-  !*** ./src/app/pages/carros/carros-routing.module.ts ***!
+  !*** ./src/app/pages/oculos/oculos-routing.module.ts ***!
   \*******************************************************/
       /***/ (
         __unused_webpack_module,
@@ -29,8 +29,8 @@
           __webpack_require__(/*! @angular/router */ 5485);
         /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ =
           __webpack_require__(/*! @ionic/angular */ 5472);
-        /* harmony import */ var _novo_carro_novo_carro_page__WEBPACK_IMPORTED_MODULE_0__ =
-          __webpack_require__(/*! ./novo-carro/novo-carro.page */ 4736);
+        /* harmony import */ var _novo_oculo_novo_oculo_page__WEBPACK_IMPORTED_MODULE_0__ =
+          __webpack_require__(/*! ./novo-oculo/novo-oculo.page */ 4736);
 
         const routes = [
           {
@@ -39,7 +39,7 @@
               {
                 path: "cadastro/:id",
                 component:
-                  _novo_carro_novo_carro_page__WEBPACK_IMPORTED_MODULE_0__.novoCarroPage,
+                  _novo_oculo_novo_oculo_page__WEBPACK_IMPORTED_MODULE_0__.novoCarroPage,
               },
             ],
           },
@@ -59,7 +59,7 @@
                 ),
               ],
               declarations: [
-                _novo_carro_novo_carro_page__WEBPACK_IMPORTED_MODULE_0__.novoCarroPage,
+                _novo_oculo_novo_oculo_page__WEBPACK_IMPORTED_MODULE_0__.novoCarroPage,
               ],
             }),
           ],
@@ -71,7 +71,7 @@
 
     /***/ 827:
       /*!***********************************************!*\
-  !*** ./src/app/pages/carros/carros.module.ts ***!
+  !*** ./src/app/pages/oculos/oculos.module.ts ***!
   \***********************************************/
       /***/ (
         __unused_webpack_module,
@@ -89,8 +89,8 @@
           __webpack_require__(/*! @angular/core */ 1109);
         /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! @angular/common */ 8143);
-        /* harmony import */ var _carros_routing_module__WEBPACK_IMPORTED_MODULE_0__ =
-          __webpack_require__(/*! ./carros-routing.module */ 754);
+        /* harmony import */ var _oculos_routing_module__WEBPACK_IMPORTED_MODULE_0__ =
+          __webpack_require__(/*! ./oculos-routing.module */ 754);
 
         let OculosModule = class OculosModule {};
         OculosModule = (0, tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)(
@@ -99,7 +99,7 @@
               declarations: [],
               imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__.CommonModule,
-                _carros_routing_module__WEBPACK_IMPORTED_MODULE_0__.OculosRoutingModule,
+                _oculos_routing_module__WEBPACK_IMPORTED_MODULE_0__.OculosRoutingModule,
               ],
             }),
           ],
@@ -111,7 +111,7 @@
 
     /***/ 4736:
       /*!************************************************************!*\
-  !*** ./src/app/pages/carros/novo-carro/novo-carro.page.ts ***!
+  !*** ./src/app/pages/oculos/novo-oculo/novo-oculo.page.ts ***!
   \************************************************************/
       /***/ (
         __unused_webpack_module,
@@ -125,8 +125,8 @@
         });
         /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ =
           __webpack_require__(/*! tslib */ 8163);
-        /* harmony import */ var _novo_carro_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ =
-          __webpack_require__(/*! ./novo-carro.page.html?ngResource */ 7239);
+        /* harmony import */ var _novo_oculo_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ =
+          __webpack_require__(/*! ./novo-oculo.page.html?ngResource */ 7239);
         /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ =
           __webpack_require__(/*! @angular/core */ 1109);
         /* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_6__ =
@@ -137,22 +137,22 @@
           __webpack_require__(/*! @angular/router */ 5485);
         /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ =
           __webpack_require__(/*! @ionic/angular */ 5472);
-        /* harmony import */ var _service_carro_service__WEBPACK_IMPORTED_MODULE_1__ =
-          __webpack_require__(/*! ../service/carro-service */ 2901);
+        /* harmony import */ var _service_oculo_service__WEBPACK_IMPORTED_MODULE_1__ =
+          __webpack_require__(/*! ../service/oculo-service */ 2901);
 
         let novoCarroPage = class novoCarroPage {
-          constructor(builder, nav, carro, actRoute, storage) {
+          constructor(builder, nav, oculo, actRoute, storage) {
             this.builder = builder;
             this.nav = nav;
-            this.carro = carro;
+            this.oculo = oculo;
             this.actRoute = actRoute;
             this.storage = storage;
             this.criando = false;
             this.id = this.actRoute.snapshot.paramMap.get("id");
-            this.carro.pegaCarro(this.id).subscribe((res) => {
+            this.oculo.pegaCarro(this.id).subscribe((res) => {
               console.log(res[0]);
               if (res[0]) {
-                this.carrosForm.patchValue({
+                this.oculosForm.patchValue({
                   nome: res[0].nome,
                   marca: res[0].marca,
                   descricao: res[0].descricao,
@@ -161,7 +161,7 @@
                 });
                 this.imageUrl = res[0].imageUrl;
               } else {
-                this.carrosForm.patchValue({
+                this.oculosForm.patchValue({
                   nome: "",
                   marca: "",
                   descricao: "",
@@ -176,7 +176,7 @@
             this.initForm();
           }
           initForm() {
-            this.carrosForm = this.builder.group({
+            this.oculosForm = this.builder.group({
               nome: [
                 "",
                 [
@@ -215,7 +215,7 @@
             });
           }
           /**
-           * Salva a nova carro no Firebase
+           * Salva a nova oculo no Firebase
            */
           registraCarro() {
             return (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(
@@ -224,19 +224,19 @@
               void 0,
               function* () {
                 this.criando = true;
-                const carro = this.carrosForm.value;
+                const oculo = this.oculosForm.value;
                 console.log(this.selectedFile);
                 if (this.id != "new") {
-                  carro.id = this.id;
+                  oculo.id = this.id;
                 }
-                var resquest_carro = this.carro.registraCarro(carro);
+                var resquest_oculo = this.oculo.registraCarro(oculo);
                 if (this.selectedFile) {
                   this.imageUrl = yield this.uploadFile(
-                    resquest_carro.id,
+                    resquest_oculo.id,
                     this.selectedFile
                   );
                 }
-                this.carro.update(resquest_carro.id, {
+                this.oculo.update(resquest_oculo.id, {
                   imageUrl: this.imageUrl || null,
                 });
                 this.criando = true;
@@ -275,7 +275,7 @@
           { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormBuilder },
           { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController },
           {
-            type: _service_carro_service__WEBPACK_IMPORTED_MODULE_1__.Carroservice,
+            type: _service_oculo_service__WEBPACK_IMPORTED_MODULE_1__.Carroservice,
           },
           { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.ActivatedRoute },
           {
@@ -285,9 +285,9 @@
         novoCarroPage = (0, tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)(
           [
             (0, _angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
-              selector: "app-novo-carro",
+              selector: "app-novo-oculo",
               template:
-                _novo_carro_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+                _novo_oculo_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
               // styleUrls: ['./novoCarro.page.scss'],
             }),
           ],
@@ -299,14 +299,14 @@
 
     /***/ 7239:
       /*!*************************************************************************!*\
-  !*** ./src/app/pages/carros/novo-carro/novo-carro.page.html?ngResource ***!
+  !*** ./src/app/pages/oculos/novo-oculo/novo-oculo.page.html?ngResource ***!
   \*************************************************************************/
       /***/ (module) => {
         module.exports =
-          '<ion-header>\n  <ion-toolbar>\n    <ion-title>novoCarro</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class="ion-padding" fullscreen>\n\n  <form [formGroup]="carrosForm" (submit)="registraCarro()">\n    <ion-item>\n      <ion-icon name="car" slot="start"></ion-icon>\n      <ion-input formControlName="nome" placeholder="Nome do Carro" autofocus="true"></ion-input>\n    </ion-item>\n    \n    <ion-item>\n      <ion-icon name="car" slot="start"></ion-icon>\n      <ion-input formControlName="marca" placeholder="Marca"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="document-text-outline"></ion-icon>\n      <ion-input formControlName="descricao" placeholder="Descrição"></ion-input>\n    </ion-item>\n    \n    <ion-item>\n      <ion-icon name="hourglass-outline"></ion-icon>\n      <ion-input formControlName="quilometragem" placeholder="Quilometragem"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="wallet" slot="start"></ion-icon>\n      <ion-input formControlName="valor" type="number" placeholder="Valor"></ion-input>\n    </ion-item>\n\n    <!-- <ion-button expand="full">\n      <ion-icon lazy="true" slot="start" name="image"></ion-icon>\n      <ion-label slot="end">Upload Image</ion-label>\n      <input type="file" (change)="loadImageFromDevice($event)" id="file-input"\n        accept="image/png, image/jpeg">\n    </ion-button>\n     -->\n    \n    <ion-item lines="none">\n      <input type="file" name="inputFile" (change)="chooseFile($event)" required>\n    </ion-item>\n\n    <ion-button [disabled]="carrosForm.invalid || criando" type="submit" expand="block" fill="outline">Enviar</ion-button>\n  </form>\n\n</ion-content>';
+          '<ion-header>\n  <ion-toolbar>\n    <ion-title>novoCarro</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class="ion-padding" fullscreen>\n\n  <form [formGroup]="oculosForm" (submit)="registraCarro()">\n    <ion-item>\n      <ion-icon name="car" slot="start"></ion-icon>\n      <ion-input formControlName="nome" placeholder="Nome do Carro" autofocus="true"></ion-input>\n    </ion-item>\n    \n    <ion-item>\n      <ion-icon name="car" slot="start"></ion-icon>\n      <ion-input formControlName="marca" placeholder="Marca"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="document-text-outline"></ion-icon>\n      <ion-input formControlName="descricao" placeholder="Descrição"></ion-input>\n    </ion-item>\n    \n    <ion-item>\n      <ion-icon name="hourglass-outline"></ion-icon>\n      <ion-input formControlName="quilometragem" placeholder="Quilometragem"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="wallet" slot="start"></ion-icon>\n      <ion-input formControlName="valor" type="number" placeholder="Valor"></ion-input>\n    </ion-item>\n\n    <!-- <ion-button expand="full">\n      <ion-icon lazy="true" slot="start" name="image"></ion-icon>\n      <ion-label slot="end">Upload Image</ion-label>\n      <input type="file" (change)="loadImageFromDevice($event)" id="file-input"\n        accept="image/png, image/jpeg">\n    </ion-button>\n     -->\n    \n    <ion-item lines="none">\n      <input type="file" name="inputFile" (change)="chooseFile($event)" required>\n    </ion-item>\n\n    <ion-button [disabled]="oculosForm.invalid || criando" type="submit" expand="block" fill="outline">Enviar</ion-button>\n  </form>\n\n</ion-content>';
 
         /***/
       },
   },
 ]);
-//# sourceMappingURL=src_app_pages_carros_carros_module_ts.js.map
+//# sourceMappingURL=src_app_pages_oculos_oculos_module_ts.js.map

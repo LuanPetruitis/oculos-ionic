@@ -31,20 +31,20 @@
             pathMatch: "full",
           },
           {
-            path: "carro",
+            path: "oculo",
             loadChildren: () =>
               Promise.all(
                 /*! import() */ [
                   __webpack_require__.e("common"),
                   __webpack_require__.e(
-                    "src_app_pages_carros_carros_module_ts"
+                    "src_app_pages_oculos_oculos_module_ts"
                   ),
                 ]
               )
                 .then(
                   __webpack_require__.bind(
                     __webpack_require__,
-                    /*! ./pages/carros/carros.module */ 827
+                    /*! ./pages/oculos/oculos.module */ 827
                   )
                 )
                 .then((m) => m.OculosModule),
@@ -254,9 +254,9 @@
           production: false,
           firebaseConfig: {
             apiKey: "AIzaSyDvoIO9wJLUomWvrvtzpO74KsF2R17Ul5Q",
-            authDomain: "carros-138d3.firebaseapp.com",
-            projectId: "carros-138d3",
-            storageBucket: "carros-138d3.appspot.com",
+            authDomain: "oculos-138d3.firebaseapp.com",
+            projectId: "oculos-138d3",
+            storageBucket: "oculos-138d3.appspot.com",
             messagingSenderId: "36182861754",
             appId: "1:36182861754:web:5f572aba57d8e9bc655f83",
           },

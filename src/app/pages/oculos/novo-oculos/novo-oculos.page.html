@@ -8,43 +8,116 @@
 
   <form [formGroup]="oculosForm" (submit)="registraOculo()">
     <ion-item>
-      <ion-icon name="car" slot="start"></ion-icon>
-      <ion-input formControlName="nome" placeholder="Nome do Oculo" autofocus="true"></ion-input>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
-    
     <ion-item>
-      <ion-icon name="car" slot="start"></ion-icon>
-      <ion-input formControlName="marca" placeholder="Marca"></ion-input>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-textarea formControlName="descricao" rows="8"></ion-textarea>
     </ion-item>
+    <ion-list mode="md">
+      <ion-list-header>
+        <ion-label>Modelo</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-select
+          interface="action-sheet"
+          placeholder="Selecionar Material"
+          id="select"
+          formControlName="material"
+        >
+        <ion-select-option value="Wayfarer">Wayfarer</ion-select-option>
+          <ion-select-option value="Coruja">Coruja</ion-select-option>
+          <ion-select-option value="Aviador">Aviador</ion-select-option>
+          <ion-select-option value="SemAroAparente">Sem aro aparente</ion-select-option>
+          <ion-select-option value="HastesMadeira">Hastes de madeira</ion-select-option>
+          <ion-select-option value="Contraste">Fio contraste</ion-select-option>
+          <ion-select-option value="Outros">Outros</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
-    <ion-item>
-      <ion-icon name="document-text-outline"></ion-icon>
-      <ion-input formControlName="descricao" placeholder="Descrição"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-icon name="hourglass-outline"></ion-icon>
-      <ion-input formControlName="quilometragem" placeholder="Quilometragem"></ion-input>
-    </ion-item>
+    <ion-list mode="md">
+      <ion-list-header>
+        <ion-label>Condição</ion-label>
+      </ion-list-header>
+      <ion-radio-group value="condicao" formControlName="condicao" mode="md">
+        <ion-item>
+          <ion-label>Novo</ion-label>
+          <ion-radio slot="start" value="Novo"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Usado</ion-label>
+          <ion-radio slot="start" value="Usado"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
 
-    <ion-item>
-      <ion-icon name="wallet" slot="start"></ion-icon>
-      <ion-input formControlName="valor" type="number" placeholder="Valor"></ion-input>
-    </ion-item>
+    <ion-list mode="md">
+      <ion-list-header>
+        <ion-label>Material de Fabricação</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>
+          Acetato de celulose
+        </ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Metal</ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Titanium</ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Alumínio</ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Aço inoxidável</ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Madeira</ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Injetados</ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Outro</ion-label>
+        <ion-checkbox color="dark"></ion-checkbox>
+      </ion-item>
+    </ion-list>
 
-    <!-- <ion-button expand="full">
-      <ion-icon lazy="true" slot="start" name="image"></ion-icon>
-      <ion-label slot="end">Upload Image</ion-label>
-      <input type="file" (change)="loadImageFromDevice($event)" id="file-input"
-        accept="image/png, image/jpeg">
-    </ion-button>
-     -->
-    
+
     <ion-item lines="none">
       <input type="file" name="inputFile" (change)="chooseFile($event)" required>
     </ion-item>
 
-    <ion-button [disabled]="oculosForm.invalid || criando" type="submit" expand="block" fill="outline">Enviar</ion-button>
+    <div id="confirm-div">
+      <ion-button color="danger">
+        Cancelar
+        <ion-icon
+          id="confirm-icon"
+          name="arrow-back-circle-outline"
+        ></ion-icon>
+      </ion-button>
+      <ion-button
+        [disabled]="oculosForm.invalid || criando" 
+        type="submit"  
+        color="success"
+      >
+        Confirmar
+        <ion-icon
+          id="confirm-icon"
+          name="checkmark-circle-outline"
+        ></ion-icon>
+      </ion-button>
+    </div>
   </form>
 
 </ion-content>
