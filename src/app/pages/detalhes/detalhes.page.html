@@ -1,9 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalhes</ion-title>
+    <ion-title>Detalhes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ nome }}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <ion-text> {{ descricao }} </ion-text>
+
+      <div id="data-div">
+        <div id="image-div">
+          <img src="{{ imageUrl }}" />
+        </div>
+        <div id="segmentos-div">
+          <div id="badge" *ngFor="let material of materias">
+            <ion-badge color="primary">{{ material }}</ion-badge>
+          </div>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item>
+          <ion-label><strong>Modelo:</strong> {{ modelo }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Condição:</strong> {{ condicao }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div id="footer-div">
+        <ion-button color="tertiary" [routerLink]="['/']">
+          Voltar
+
+          <ion-icon
+            id="confirm-icon"
+            name="arrow-back-circle-outline"
+          ></ion-icon>
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

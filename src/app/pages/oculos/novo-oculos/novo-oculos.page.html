@@ -5,119 +5,132 @@
 </ion-header>
 
 <ion-content class="ion-padding" fullscreen>
-
-  <form [formGroup]="oculosForm" (submit)="registraOculo()">
-    <ion-item>
-      <ion-label position="floating">Nome</ion-label>
-      <ion-input formControlName="nome" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Descrição</ion-label>
-      <ion-textarea formControlName="descricao" rows="8"></ion-textarea>
-    </ion-item>
-    <ion-list mode="md">
-      <ion-list-header>
-        <ion-label>Modelo</ion-label>
-      </ion-list-header>
-      <ion-item>
-        <ion-select
-          interface="action-sheet"
-          placeholder="Selecionar Material"
-          id="select"
-          formControlName="material"
-        >
-        <ion-select-option value="Wayfarer">Wayfarer</ion-select-option>
-          <ion-select-option value="Coruja">Coruja</ion-select-option>
-          <ion-select-option value="Aviador">Aviador</ion-select-option>
-          <ion-select-option value="SemAroAparente">Sem aro aparente</ion-select-option>
-          <ion-select-option value="HastesMadeira">Hastes de madeira</ion-select-option>
-          <ion-select-option value="Contraste">Fio contraste</ion-select-option>
-          <ion-select-option value="Outros">Outros</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-
-    <ion-list mode="md">
-      <ion-list-header>
-        <ion-label>Condição</ion-label>
-      </ion-list-header>
-      <ion-radio-group value="condicao" formControlName="condicao" mode="md">
+  <ion-card class="ion-text-start">
+    <ion-card-header>
+      <ion-card-title>Cadastro de Óculos</ion-card-title>            
+    </ion-card-header>
+    
+    <ion-card-content>
+      <div id="crop">
+        <img src="{{ imageUrl  }}" />
+      </div>
+            
+      <form [formGroup]="oculosForm" (submit)="registraOculo()">
         <ion-item>
-          <ion-label>Novo</ion-label>
-          <ion-radio slot="start" value="Novo"></ion-radio>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input formControlName="nome" type="text"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label>Usado</ion-label>
-          <ion-radio slot="start" value="Usado"></ion-radio>
+          <ion-label position="floating">Descrição</ion-label>
+          <ion-textarea formControlName="descricao" rows="8"></ion-textarea>
         </ion-item>
-      </ion-radio-group>
-    </ion-list>
-
-    <ion-list mode="md">
-      <ion-list-header>
-        <ion-label>Material de Fabricação</ion-label>
-      </ion-list-header>
-      <ion-item>
-        <ion-label>
-          Acetato de celulose
-        </ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Metal</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Titanium</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Alumínio</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Aço inoxidável</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Madeira</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Injetados</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Outro</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-    </ion-list>
-
-
-    <ion-item lines="none">
-      <input type="file" name="inputFile" (change)="chooseFile($event)" required>
-    </ion-item>
-
-    <div id="confirm-div">
-      <ion-button color="danger">
-        Cancelar
-        <ion-icon
-          id="confirm-icon"
-          name="arrow-back-circle-outline"
-        ></ion-icon>
-      </ion-button>
-      <ion-button
-        [disabled]="oculosForm.invalid || criando" 
-        type="submit"  
-        color="success"
-      >
-        Confirmar
-        <ion-icon
-          id="confirm-icon"
-          name="checkmark-circle-outline"
-        ></ion-icon>
-      </ion-button>
-    </div>
-  </form>
+        <ion-list mode="md">
+          <ion-list-header>
+            <ion-label>Modelo</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-select
+              interface="action-sheet"
+              placeholder="Selecionar Material"
+              id="select"
+              formControlName="modelo"
+            >
+            <ion-select-option value="Wayfarer">Wayfarer</ion-select-option>
+              <ion-select-option value="Coruja">Coruja</ion-select-option>
+              <ion-select-option value="Aviador">Aviador</ion-select-option>
+              <ion-select-option value="SemAroAparente">Sem aro aparente</ion-select-option>
+              <ion-select-option value="HastesMadeira">Hastes de madeira</ion-select-option>
+              <ion-select-option value="Contraste">Fio contraste</ion-select-option>
+              <ion-select-option value="Outros">Outros</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+    
+        <ion-list mode="md">
+          <ion-list-header>
+            <ion-label>Condição</ion-label>
+          </ion-list-header>
+          <ion-radio-group value="condicao" formControlName="condicao" mode="md">
+            <ion-item>
+              <ion-label>Novo</ion-label>
+              <ion-radio slot="start" value="Novo"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Usado</ion-label>
+              <ion-radio slot="start" value="Usado"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+    
+        <ion-list mode="md">
+          <ion-list-header>
+            <ion-label>Material de Fabricação</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>
+              Acetato de celulose
+            </ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Celulose')" formControlName="material_celulose"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Metal</ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Metal')" formControlName="material_metal"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Titanium</ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Titanium')" formControlName="material_titanium"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Alumínio</ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Aluminio')" formControlName="material_aluminio"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Aço inoxidável</ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Aco')" formControlName="material_aco"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Madeira</ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Madeira')" formControlName="material_madeira"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Injetados</ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Injetados')" formControlName="material_injetados"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Outro</ion-label>
+            <ion-checkbox color="dark" (click)="changeSelection('Outro')" formControlName="material_outro"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+    
+    
+        <ion-item lines="none">
+          <input type="file" name="inputFile" (change)="chooseFile($event)" required>
+        </ion-item>
+    
+        <div id="confirm-div">
+          <ion-button [routerLink]="['/']" color="danger">
+            Cancelar
+            <ion-icon
+              id="confirm-icon"
+              name="arrow-back-circle-outline"
+            ></ion-icon>
+          </ion-button>
+          <ion-button
+            [disabled]="oculosForm.invalid || criando" 
+            type="submit"  
+            color="success"
+          >
+            Confirmar
+            <ion-icon
+              id="confirm-icon"
+              name="checkmark-circle-outline"
+            ></ion-icon>
+          </ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  
+    <!-- <img [src]="oculo.imageUrl" alt="" [routerLink]="['/oculos/cadastro/', oculo.id]"> -->
+  </ion-card> 
 
 </ion-content>

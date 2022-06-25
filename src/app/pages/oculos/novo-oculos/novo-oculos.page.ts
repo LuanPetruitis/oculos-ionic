@@ -18,6 +18,8 @@ export class novoOculoPage implements OnInit {
   id: any;
   imageUrl: any;
   criando: any;
+  checkedItems = [];
+
 
   constructor(
     private builder: FormBuilder,
@@ -33,19 +35,33 @@ export class novoOculoPage implements OnInit {
       if (res[0]){ 
         this.oculosForm.patchValue({
           nome: res[0].nome, 
-          marca: res[0].marca,
-          descricao: res[0].descricao,
-          quilometragem: res[0].quilometragem,
-          valor: res[0].valor
+          descricao: res[0].descricao, 
+          modelo: res[0].modelo, 
+          condicao: res[0].condicao, 
+          material_celulose: res[0].material_celulose,
+          material_metal: res[0].material_metal,
+          material_titanium: res[0].material_titanium,
+          material_aluminio: res[0].material_aluminio, 
+          material_aco: res[0].material_aco, 
+          material_madeira: res[0].material_madeira, 
+          material_injetados: res[0].material_injetados, 
+          material_outro: res[0].material_outro, 
         });
         this.imageUrl = res[0].imageUrl
       } else {
         this.oculosForm.patchValue({
-          nome: '', 
-          marca: '',
+          nome: '',
           descricao: '',
-          quilometragem: 0,
-          valor: 0
+          modelo: '',
+          condicao: '',
+          material_celulose: false,
+          material_metal: false,
+          material_titanium: false,
+          material_aluminio: false,
+          material_aco: false,
+          material_madeira: false,
+          material_injetados: false,
+          material_outro: false,
         });
         this.imageUrl = ''
       }
@@ -54,15 +70,23 @@ export class novoOculoPage implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.oculosForm.setErrors({ required: true });
   }
 
   private initForm() {
     this.oculosForm = this.builder.group({
       nome: ['', [Validators.required]],
-      marca: ['', [Validators.required]],
       descricao: ['', [Validators.required]],
-      quilometragem: ['', [Validators.required]],
-      valor: ['', [Validators.required]],
+      modelo: ['', [Validators.required]],
+      condicao: ['', [Validators.required]],
+      material_celulose: [false],
+      material_metal: [false],
+      material_titanium: [false],
+      material_aluminio: [false],
+      material_aco: [false],
+      material_madeira: [false],
+      material_injetados: [false],
+      material_outro: [false],
     })
   }
 
@@ -78,18 +102,22 @@ export class novoOculoPage implements OnInit {
       oculo.id = this.id
     }
 
+    oculo.materias = this.checkedItems
     var resquest_oculo = this.oculo.registraOculo(oculo)
   
+    console.log(this.selectedFile)
     if (this.selectedFile) {
+      console.log("===============================")
       this.imageUrl = await this.uploadFile(resquest_oculo.id, this.selectedFile)
     }
-
+    
+    console.log(this.imageUrl)
     this.oculo.update(resquest_oculo.id, {
       imageUrl: this.imageUrl || null
     })
 
     
-    this.criando = true;
+    this.criando = false;
     this.nav.navigateForward('home')
   }
 
@@ -108,4 +136,11 @@ export class novoOculoPage implements OnInit {
     }
   }
 
+  changeSelection(item) {
+    if (this.checkedItems.includes(item)) {
+      this.checkedItems = this.checkedItems.filter((value) => value != item);
+    } else {
+      this.checkedItems.push(item);
+    }
+  }
 }

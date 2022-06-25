@@ -12,13 +12,17 @@ import { Oculoservice } from '../oculos/service/oculos-service';
   styleUrls: ['./detalhes.page.scss'],
 })
 export class DetalhesPage implements OnInit {
-  oculosForm: FormGroup;
 
   selectedFile: any;
   id: any;
   imageUrl: any;
   criando: any;
-
+  nome: any;
+  descricao: any;
+  modelo: any;
+  condicao: any;
+  materias: any;
+  
   constructor(
     // private builder: FormBuilder,
     private nav: NavController,
@@ -30,22 +34,18 @@ export class DetalhesPage implements OnInit {
     this.oculo.pegaOculo(this.id).subscribe(res => {
       console.log(res[0])
       if (res[0]){ 
-        this.oculosForm.patchValue({
-          nome: res[0].nome, 
-          marca: res[0].marca,
-          descricao: res[0].descricao,
-          quilometragem: res[0].quilometragem,
-          valor: res[0].valor
-        });
+        this.nome = res[0].nome,
+        this.descricao = res[0].descricao, 
+        this.modelo = res[0].modelo, 
+        this.condicao = res[0].condicao, 
+        this.materias = res[0].materias,
         this.imageUrl = res[0].imageUrl
       } else {
-        this.oculosForm.patchValue({
-          nome: '', 
-          marca: '',
-          descricao: '',
-          quilometragem: 0,
-          valor: 0
-        });
+        this.nome = ''
+        this.descricao = ''
+        this.modelo = ''
+        this.condicao = ''
+        this.materias = []
         this.imageUrl = ''
       }
     })
