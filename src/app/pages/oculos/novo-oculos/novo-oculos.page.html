@@ -108,7 +108,7 @@
         </ion-item>
     
         <div id="confirm-div">
-          <ion-button [routerLink]="['/']" color="danger">
+          <ion-button (click)="cancel()" color="danger">
             Cancelar
             <ion-icon
               id="confirm-icon"

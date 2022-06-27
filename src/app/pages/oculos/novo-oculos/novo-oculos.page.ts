@@ -143,4 +143,23 @@ export class novoOculoPage implements OnInit {
       this.checkedItems.push(item);
     }
   }
+
+  cancel() {
+    this.oculosForm.patchValue({
+      nome: '',
+      descricao: '',
+      modelo: '',
+      condicao: '',
+      material_celulose: false,
+      material_metal: false,
+      material_titanium: false,
+      material_aluminio: false,
+      material_aco: false,
+      material_madeira: false,
+      material_injetados: false,
+      material_outro: false,
+    });
+    this.imageUrl = ''
+    this.nav.navigateForward('home')
+  }
 }
